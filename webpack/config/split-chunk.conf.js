@@ -15,6 +15,14 @@ const splitChunksConfig = {
     enforce: true,
     priority: 10
   },
+  // 项目基础包
+  tree: {
+    test: /node_modules\/tree/g,
+    name: 'tree',
+    chunks: 'all',
+    enforce: true,
+    priority: 10
+  },
   // 剩余chunk自动分割
   commons: {
     name: 'commons',
