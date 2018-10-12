@@ -1,0 +1,12 @@
+node_modules/
+bin/*
+dist/*
+src/**/*.png
+src/**/*.jpg
+src/**/*.gif
+src/**/*.svg
+src/**/*.html
+.DS_Store
+.eslintignore
+.prettierignore
+.gitignore
