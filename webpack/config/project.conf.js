@@ -64,6 +64,7 @@ const config = {
     // 优先搜索src下的公共资源目录
     modules: [
       resolve(process.cwd(), './src/assets'),
+      resolve(process.cwd(), './src/source'),
       resolve(process.cwd(), './src/libs'),
       resolve(process.cwd(), './src/components'),
       'node_modules'
@@ -71,6 +72,7 @@ const config = {
     alias: {
       // 公共资源
       assets: resolve(process.cwd(), './src/assets'),
+      source: resolve(process.cwd(), './source'),
       libs: resolve(process.cwd(), './src/libs'),
       components: resolve(process.cwd(), './src/components')
     }
