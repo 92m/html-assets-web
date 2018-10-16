@@ -10,3 +10,4 @@ src/**/*.html
 .eslintignore
 .prettierignore
 .gitignore
+*/.3ds

@@ -16,8 +16,8 @@ const splitChunksConfig = {
     priority: 10
   },
   // 项目基础包
-  tree: {
-    test: /node_modules\/tree/g,
+  three: {
+    test: /node_modules\/three/g,
     name: 'tree',
     chunks: 'all',
     enforce: true,
