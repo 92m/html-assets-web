@@ -44,40 +44,40 @@ import './assets'
     scene.add(directionalLight)
 
     //3ds files dont store normal maps
-    var loader = new THREE.TextureLoader()
-    var normal = loader.load('source/models/3ds/portalgun/textures/normal.jpg')
+    // var loader = new THREE.TextureLoader()
+    // var normal = loader.load('source/models/3ds/portalgun/textures/normal.jpg')
 
-    var loader = new THREE.TDSLoader()
-    loader.setResourcePath('source/models/3ds/portalgun/textures/')
-    loader.load('source/models/3ds/portalgun/portalgun.3ds', function(object) {
-      object.traverse(function(child) {
-        if (child instanceof THREE.Mesh) {
-          child.material.normalMap = normal
-        }
-      })
-      scene.add(object)
-    })
-    //var modelName = 'tricycle'
+    // var loader = new THREE.TDSLoader()
+    // loader.setResourcePath('source/models/3ds/portalgun/textures/')
+    // loader.load('source/models/3ds/portalgun/portalgun.3ds', function(object) {
+    //   object.traverse(function(child) {
+    //     if (child instanceof THREE.Mesh) {
+    //       child.material.normalMap = normal
+    //     }
+    //   })
+    //   scene.add(object)
+    // })
+    var modelName = 'tricycle'
 
-    // var objLoader = new THREE.OBJLoader2()
-    // var callbackOnLoad = function(event) {
-    //   scene.add(event.detail.loaderRootNode)
-    // }
+    var objLoader = new THREE.OBJLoader2()
+    var callbackOnLoad = function(event) {
+      scene.add(event.detail.loaderRootNode)
+    }
 
-    // var onLoadMtl = function(materials) {
-    //   objLoader.setModelName(modelName)
-    //   objLoader.setMaterials(materials)
-    //   objLoader.setLogging(true, true)
-    //   objLoader.load(
-    //     'source/models/obj/Rudgetricycle/Rudgetricycle.obj',
-    //     callbackOnLoad,
-    //     null,
-    //     null,
-    //     null,
-    //     false
-    //   )
-    // }
-    // objLoader.loadMtl('source/models/obj/Rudgetricycle/Rudgetricycle.mtl', null, onLoadMtl)
+    var onLoadMtl = function(materials) {
+      objLoader.setModelName(modelName)
+      objLoader.setMaterials(materials)
+      objLoader.setLogging(true, true)
+      objLoader.load(
+        'source/models/obj/Rudgetricycle/Rudgetricycle.obj',
+        callbackOnLoad,
+        null,
+        null,
+        null,
+        false
+      )
+    }
+    objLoader.loadMtl('source/models/obj/Rudgetricycle/Rudgetricycle.mtl', null, onLoadMtl)
 
     renderer = new THREE.WebGLRenderer()
     renderer.setPixelRatio(window.devicePixelRatio)
