@@ -1,3 +1,4 @@
+const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const WebpackDevServer = require('webpack-dev-server')
@@ -59,27 +60,7 @@ const developmentConfig = webpackMerge(loaderConfig, {
     new webpack.DefinePlugin(config.globalVar[config.env]),
 
     // 配置webpack运行报错警告
-    new FriendlyErrorsPlugin({
-      compilationSuccessInfo: {
-        messages: [
-          `Your application is running here: http://${config.development.host}:${
-            config.development.port
-          }`
-        ]
-      },
-      onErrors: () => {
-        return (serverity, errors) => {
-          const error = errors[0]
-          const filename = error.file && error.file.split('!').pop
-          console.log('neide')
-          Notifier.notify({
-            title: '',
-            message: serverity + ':' + error.name,
-            subtitle: filename || ''
-          })
-        }
-      }
-    }),
+    new FriendlyErrorsPlugin(),
 
     // html配置
     ...htmlPlugins,
@@ -105,7 +86,7 @@ const developmentConfig = webpackMerge(loaderConfig, {
 const devServerConfig = {
   host: config.development.host,
   port: config.development.port,
-  contentBase: config.outputPath,
+  contentBase: [config.outputPath, path.join(process.cwd(), './static')],
   publicPath: '/',
   // proxy-server
   proxy: config.development.proxy,

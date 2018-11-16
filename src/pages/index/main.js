@@ -1,4 +1,7 @@
 const THREE = require('three')
+import { initMixin } from './utils/mixin'
+
+initMixin(THREE)
 
 class THREEAPP {
   constructor(element, ops) {
@@ -41,7 +44,33 @@ class THREEAPP {
       this.cameraDefaults.far
     )
     this.resetCamera()
+    this.controls = new THREE.TrackballControls(this.camera, this.renderer.domElement)
+
+    const path = 'textures/cube/skybox/'
+    const urls = [
+      path + 'px.jpg',
+      path + 'nx.jpg',
+      path + 'py.jpg',
+      path + 'ny.jpg',
+      path + 'pz.jpg',
+      path + 'nz.jpg'
+    ]
+
+    const textureCube = new THREE.CubeTextureLoader().load(urls)
+
+    this.scene.background = textureCube
   }
+
+  resizeDisplayGL() {
+    this.controls.handleResize()
+
+    this.recalcAspectRatio()
+    this.renderer.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight, false)
+
+    this.updateCamera()
+  }
+
+  initContent() {}
 
   recalcAspectRatio() {
     this.aspectRatio =
@@ -54,4 +83,12 @@ class THREEAPP {
 
     this.updateCamera()
   }
+
+  updateCamera() {
+    this.camera.aspect = this.aspectRatio
+    this.camera.lookAt(this.cameraTarget)
+    this.camera.updateProjectionMatrix()
+  }
 }
+
+export default THREEAPP

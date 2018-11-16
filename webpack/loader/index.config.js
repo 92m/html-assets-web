@@ -4,7 +4,6 @@ const cssLoader = require('./css-loader.conf')
 const lessLoader = require('./less-loader.conf')
 const sassLoader = require('./sass-loader.conf')
 const urlLoader = require('./url-loader.conf')
-const fileLoader = require('./file-loader.conf')
 const vueLoader = require('./vue-loader.conf')
 
 module.exports = webpackMerge(
@@ -14,6 +13,5 @@ module.exports = webpackMerge(
   sassLoader,
   lessLoader,
   urlLoader,
-  fileLoader,
   vueLoader
 )
