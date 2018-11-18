@@ -7,8 +7,8 @@ import './index.scss'
     document.body.appendChild(getWebGLErrorMessage())
   }
 
-  const app = new THREEAPP(document.getElementById('canvas'))
+  const app = new THREEAPP(document.getElementById('container'))
 
   app.initGL()
-  app.resizeDisplayGL()
+
 })()
