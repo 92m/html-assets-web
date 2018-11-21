@@ -10,5 +10,4 @@ import './index.scss'
   const app = new THREEAPP(document.getElementById('container'))
 
   app.initGL()
-
 })()
