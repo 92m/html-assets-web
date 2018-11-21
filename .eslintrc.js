@@ -15,11 +15,11 @@ module.exports = {
   },
   plugins: ['html'],
   rules: {
-    'indent': ['error', 2],
+    indent: ['error', 2],
     'linebreak-style': ['error', 'unix'],
-    'quotes': ['error', 'single'],
-    'semi': ['error', 'never'],
-    'no-console': ['error', { 'allow': ['log', 'warn', 'error'] }],
-    'no-unused-vars': ['error', { 'vars': 'all', 'args': 'none', 'ignoreRestSiblings': false }]
+    quotes: ['error', 'single'],
+    semi: ['error', 'never'],
+    'no-console': ['error', { allow: ['log', 'warn', 'error'] }],
+    'no-unused-vars': ['error', { vars: 'all', args: 'none', ignoreRestSiblings: false }]
   }
 }

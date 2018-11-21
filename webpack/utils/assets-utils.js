@@ -11,12 +11,12 @@ const createModernAssetsScript = (assetPath, param) => {
   if (param && param === 'inline') {
     let assetoutputPath = path.join(outputPath, assetPath)
     let asset = ''
-    
+
     // 将path中的publicPath替换成根路径
     assetOutputPath = assetOutputPath.replace(publicPath, '/')
 
     asset = fs.readFileSync(assetOutputPath).toString()
-    
+
     return `<script type="module">${asset}</script>`
   }
 

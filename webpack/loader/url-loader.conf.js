@@ -1,11 +1,8 @@
-const path = require('path')
-
 const urlLoaderConfig = {
   module: {
     rules: [
       {
         test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
-        exclude: path.resolve(process.cwd(), './source'),
         use: [
           {
             loader: 'url-loader',
@@ -18,7 +15,6 @@ const urlLoaderConfig = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
-        exclude: path.resolve(process.cwd(), './source'),
         use: [
           {
             loader: 'url-loader',

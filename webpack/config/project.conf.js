@@ -34,7 +34,7 @@ const config = {
   // 设置开发环境的development变量
   development: {
     host: 'localhost',
-    port: 8001,
+    port: 8002,
     filename: 'script/[name].js',
     chunkFilename: 'script/[name].chunk.js',
     proxy: {
