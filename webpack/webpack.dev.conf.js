@@ -5,6 +5,7 @@ const WebpackDevServer = require('webpack-dev-server')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const Notifier = require('node-notifier')
 const { configBabelLoader } = require('./config/babel-loader.conf')
@@ -55,12 +56,38 @@ const developmentConfig = webpackMerge(loaderConfig, {
       'last 2 Edge versions',
       'not Edge < 15'
     ]),
+    // 开启热更新
+    new webpack.HotModuleReplacementPlugin(),
 
     // 定义环境变量
     new webpack.DefinePlugin(config.globalVar[config.env]),
 
     // 配置webpack运行报错警告
-    new FriendlyErrorsPlugin(),
+    new FriendlyErrorsPlugin({
+      compilationSuccessInfo: {
+        messages: [
+          `Your application is running here: http://${config.development.host}:${
+            config.development.port
+          }`
+        ]
+      },
+      onErrors: (serverity, errors) => {
+        const error = errors[0]
+        const filename =
+          error.file &&
+          error.file
+            .split('!')
+            .pop()
+            .split('?')
+            .shift()
+        Notifier.notify({
+          title: 'Σ(oﾟдﾟoﾉ)',
+          message: serverity + ':' + error.name,
+          subtitle: filename || '',
+          icon: path.join(process.cwd(), './static/favicon.ico')
+        })
+      }
+    }),
 
     // html配置
     ...htmlPlugins,
@@ -72,7 +99,16 @@ const developmentConfig = webpackMerge(loaderConfig, {
     }),
 
     // 同步构建文件生产至磁盘
-    new WriteFilePlugin(),
+    // new WriteFilePlugin(),
+
+    // 拷贝静态文件
+    new CopyWebpackPlugin([
+      {
+        from: config.assetsSubDirectory,
+        to: path.resolve(process.cwd(), './dist/static'),
+        ignore: ['.*']
+      }
+    ]),
 
     // 错误不打断程序
     new webpack.NoEmitOnErrorsPlugin(),
@@ -86,7 +122,8 @@ const developmentConfig = webpackMerge(loaderConfig, {
 const devServerConfig = {
   host: config.development.host,
   port: config.development.port,
-  contentBase: [config.outputPath, path.join(process.cwd(), './static')],
+  contentBase: [config.outputPath],
+  hot: true,
   publicPath: '/',
   // proxy-server
   proxy: config.development.proxy,

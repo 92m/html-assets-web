@@ -30,6 +30,9 @@ const config = {
   // 设置输出文件夹
   outputPath: resolve(process.cwd(), './dist'),
   publicPath: '/',
+  
+   // 设置静态资源文件夹
+   assetsSubDirectory: resolve(process.cwd(), './static'),
 
   // 设置开发环境的development变量
   development: {
