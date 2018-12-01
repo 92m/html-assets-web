@@ -1,5 +1,5 @@
 const THREE = require('three')
-import { initMixin } from './utils/mixin'
+import { initMixin } from '../../libs/utils/mixin'
 import Sea from './components/member/sea'
 import Sky from './components/member/sky'
 import AirPlane from './components/member/airPlane'
@@ -114,6 +114,7 @@ class THREEAPP {
       false
     )
   }
+
   createLights() {
     // 半球光就是渐变的光；
     // 第一个参数是天空的颜色，第二个参数是地上的颜色，第三个参数是光源的强度
@@ -149,6 +150,7 @@ class THREEAPP {
     this.scene.add(shadowLight)
     this.scene.add(ambientLight)
   }
+
   createSea() {
     this.sea = new Sea(this.colors)
 
@@ -158,17 +160,20 @@ class THREEAPP {
     // 添加大海的网格至场景
     this.scene.add(this.sea.mesh)
   }
+
   createSky() {
     this.sky = new Sky(this.colors)
-    this.sky.mesh.position.y = -600
+    this.sky.mesh.position.y = -400
     this.scene.add(this.sky.mesh)
   }
+
   createPlane() {
     this.airPlane = new AirPlane(this.colors)
     this.airPlane.mesh.scale.set(0.25, 0.25, 0.25)
     this.airPlane.mesh.position.y = 100
     this.scene.add(this.airPlane.mesh)
   }
+
   handleWindowResize() {
     // 更新渲染器的高度和宽度以及相机的纵横比
     this.HEIGHT = window.innerHeight
