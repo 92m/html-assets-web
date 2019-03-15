@@ -2,7 +2,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const postcssConfig = require('../config/postcss.config')
 const config = require('../config/project.conf')
 
-const openSourceMap = config.env !== 'production' ? true : false
+const openSourceMap = config.env === 'development' ? true : false
 const styleLoader = {
   loader: 'style-loader',
   options: {
@@ -20,6 +20,8 @@ let cssLoaderConfig = {
           {
             loader: 'css-loader',
             options: {
+              import: true,
+              modules: true,
               sourceMap: openSourceMap
             }
           },

@@ -10,12 +10,10 @@
     <!-- {{ 'loading-css' | addAssets() }} -->
 </head>
 <body>
-    <div id="world">
+    <div id="app">
         <!-- {{ 'loading-html' | addAssets() }} -->
     </div>
     <!-- 以注释的方式添加模板语法，addAssets方法可以注入对应模块组（按顺序），需要内联的模块加冒号和inline(仅给modern script内联) -->
-    <!-- {{ 'js' | addAssets(['manifest', 'commons', 'vendor']) }} -->
-    <script type="text/javascript" src="./static/demo/three.min.js"></script>
-    <script type="text/javascript" src="./static/demo/main_step1.js"></script>
+    <!-- {{ 'js' | addAssets(['manifest', 'commons', 'vendor-react', 'spa-vendor-react']) }} -->
 </body>
 </html>

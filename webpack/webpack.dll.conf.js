@@ -7,7 +7,7 @@ const config = require('./config/project.conf')
 const vendors = pkg.dependencies && Object.keys(pkg.dependencies)
 
 module.exports = {
-  mode: config.env,
+  mode: 'development',
   output: {
     path: path.resolve(process.cwd(), './dist'),
     filename: '[name].dll.js',

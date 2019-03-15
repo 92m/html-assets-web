@@ -2,12 +2,11 @@ const urlLoaderConfig = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
+        test: /\.(png|jpe?g|gif)(\?\S*)?$/,
         use: [
           {
             loader: 'url-loader',
             options: {
-              limit: 1024,
               name: 'images/[name].[hash:7].[ext]'
             }
           }
@@ -19,7 +18,6 @@ const urlLoaderConfig = {
           {
             loader: 'url-loader',
             options: {
-              limit: 1024,
               name: 'fonts/[name].[hash].[ext]'
             }
           }

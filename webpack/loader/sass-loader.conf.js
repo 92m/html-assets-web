@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const postcssConfig = require('../config/postcss.config')
 const config = require('../config/project.conf')
 
-const openSourceMap = config.env !== 'production' ? true : false
+const openSourceMap = config.env === 'development' ? true : false
 const styleLoader = {
   loader: 'style-loader',
   options: {
@@ -22,6 +22,9 @@ let sassLoaderConfig = {
           {
             loader: 'css-loader',
             options: {
+              import: true,
+              modules: true,
+              localIdentName: '[local]-[hash:base64:5]',
               sourceMap: openSourceMap
             }
           },
@@ -47,7 +50,8 @@ let sassLoaderConfig = {
               sourceMap: openSourceMap,
               resources: [
                 resolve(process.cwd(), './src/assets/scss/mixin.scss'),
-                resolve(process.cwd(), './src/assets/scss/svg.scss')
+                resolve(process.cwd(), './src/assets/scss/svg.scss'),
+                resolve(process.cwd(), './src/assets/scss/antd-global.scss')
               ]
             }
           }

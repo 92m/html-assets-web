@@ -15,12 +15,14 @@ const postcssConfig = [
    * selectorBlackList: [],  // 需要匹配某一些类或者标签不进行vw的转换
    * minPixelValue: 1  // 小于或等于`1px`不转换为视窗单位
    */
-  require('postcss-px-to-viewport')({
-    viewportWidth: 375,
-    unitPrecision: 3,
-    selectorBlackList: ['.ignore'],
-    minPixelValue: 1
-  }),
+
+  // require('postcss-px-to-viewport')({
+  //   viewportWidth: 375,
+  //   unitPrecision: 3,
+  //   selectorBlackList: ['.ignore'],
+  //   minPixelValue: 1
+  // }),
+
   /**
    * browsersList在package.json中设置即可
    */

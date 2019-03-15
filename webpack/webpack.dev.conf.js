@@ -56,6 +56,7 @@ const developmentConfig = webpackMerge(loaderConfig, {
       'last 2 Edge versions',
       'not Edge < 15'
     ]),
+
     // 开启热更新
     new webpack.HotModuleReplacementPlugin(),
 
@@ -122,7 +123,7 @@ const developmentConfig = webpackMerge(loaderConfig, {
 const devServerConfig = {
   host: config.development.host,
   port: config.development.port,
-  contentBase: [config.outputPath],
+  contentBase: config.outputPath,
   hot: true,
   publicPath: '/',
   // proxy-server
