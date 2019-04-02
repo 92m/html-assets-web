@@ -1,0 +1,9 @@
+html,
+body,
+:global(#root) {
+  height: 100vh;
+}
+:global(#app) {
+  height: 100vh;
+  background: linear-gradient(to top left, #D7F6FD 0%, #f2fdfe 65%, #F4FDFF 100%);
+}

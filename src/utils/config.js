@@ -20,16 +20,7 @@ const loginTimeout = 1
  * 统一配置cookie name
  */
 
-const cookies = {
-  auth: 'global_auth_sys',
-  identity: 'global_user_name',
-  accountId: 'global_account_id',
-  tenantId: 'global_tenant_id',
-  resourceId: 'global_resource_id',
-  accessId: 'global_access_id',
-  orgId: 'global_org_id',
-  personId: 'global_person_id'
-}
+const cookies = {}
 
 /**
  * 后端服务请求地址 map

@@ -3,11 +3,7 @@ import { initMixin } from '../../libs/utils/mixin'
 
 initMixin(THREE)
 class THREEAPP {
-    constructor(container, ops) {
+  constructor(container, ops) {}
 
-    }
-
-    initGL() {
-
-    }
+  initGL() {}
 }
