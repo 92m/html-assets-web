@@ -1,9 +1,83 @@
+:root {
+  --bgColorLightd7f6fd: #d7f6fd;
+  --bgColorLightf2fdfe: #f2fdfe;
+  --bgColorLightf4fdff: #f4fdff;
+  --textColor: #8c8c9c;
+  --textColorDark: #000000;
+  --paperColor: #f7f7f7;
+  --paperColorDark: #dff8fc;
+  --shadowColorFaint: hsla(0, 0%, 0%, 0.2);
+}
+
 html,
 body,
 :global(#root) {
   height: 100vh;
+  background: linear-gradient(
+    to top left,
+    var(--bgColorLightd7f6fd) 0%,
+    var(--bgColorLightf2fdfe) 65%,
+    var(--bgColorLightf4fdff) 100%
+  );
 }
 :global(#app) {
   height: 100vh;
-  background: linear-gradient(to top left, #D7F6FD 0%, #f2fdfe 65%, #F4FDFF 100%);
+  background: linear-gradient(
+    to top left,
+    var(--bgColorLightd7f6fd) 0%,
+    var(--bgColorLightf2fdfe) 65%,
+    var(--bgColorLightf4fdff) 100%
+  );
+  //background: #000000;
+}
+::selected {
+  color: var(--textColorDark);
+}
+
+audio {
+  display: none;
+}
+
+.content {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+}
+
+.thefile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+label.file {
+  display: inline-block;
+  transform: translate3d(-50%, -50%, 0);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background: var(--paperColor);
+  color: var(--textColor);
+  font-size: 1em;
+  font-weight: 700;
+  box-shadow: 0 20px 60px var(--shadowColorFaint);
+  cursor: pointer;
+  outline: none;
+}
+label.file:hover {
+  background: var(--paperColorDark);
+  transform: translate3d(-50%, -55%, 0);
+}
+label.file:active {
+  background: var(--paperColorDark);
+  transform: translate3d(-50%, -45%, 0);
+}
+label.file.normal {
+  transform: translate3d(10%, 50%, 0);
+  padding: 0.2rem 2rem;
+  font-size: 1rem;
+  top: 0;
+  left: 0;
 }

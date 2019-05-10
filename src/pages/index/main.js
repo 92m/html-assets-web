@@ -4,6 +4,7 @@ import Sea from './components/member/sea'
 import Sky from './components/member/sky'
 import AirPlane from './components/member/airPlane'
 initMixin(THREE)
+
 class THREEAPP {
   constructor(container, ops) {
     this.scene = null
@@ -155,7 +156,6 @@ class THREEAPP {
     this.sea = new Sea(this.colors)
 
     // 在场景底部，稍微推挤一下
-    this.sea.mesh.position.y = -600
 
     // 添加大海的网格至场景
     this.scene.add(this.sea.mesh)
