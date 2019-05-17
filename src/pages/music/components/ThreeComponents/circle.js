@@ -9,11 +9,12 @@ class Circle {
   init(colors) {
     this.mesh = new THREE.Object3D()
     // 创建圆环1
-    const geome1 = new THREE.CircleGeometry(13, 80)
+    const geome1 = new THREE.CircleGeometry(12, 80)
 
     // 创建皮肤1
     const material1 = new THREE.MeshBasicMaterial({
       color: 0x59b9f9,
+      opacity: 0.8,
       transparent: true
     })
     const mesh1 = new THREE.Mesh(geome1, material1)
@@ -21,11 +22,12 @@ class Circle {
     this.mesh.add(mesh1)
 
     // 创建圆环2
-    const geome2 = new THREE.CircleGeometry(12.5, 80)
+    const geome2 = new THREE.CircleGeometry(11, 80)
 
     // 创建皮肤2
     const material2 = new THREE.MeshBasicMaterial({
       color: 0x2cd7f5,
+      opacity: 0.7,
       transparent: true
     })
     const mesh2 = new THREE.Mesh(geome2, material2)
