@@ -1,5 +1,6 @@
 const THREE = require('three')
 import Circle from './components/ThreeComponents/circle'
+import Cylinder from './components/ThreeComponents/cylinder'
 import Icosahedron from './components/ThreeComponents/icosahedron'
 import { initMixin } from '../../libs/utils/mixin'
 
@@ -23,6 +24,7 @@ class THREEAPP {
 
     this.circle = null
     this.icosahedron = null
+    this.cylinder = null
 
     this.colors = {
       red: 0xf25346,
@@ -37,15 +39,17 @@ class THREEAPP {
   initGL() {
     this.createScene()
     this.createLights()
-    this.createCircle()
-    this.createIcosahedron()
+    // this.createCircle()
+    // this.createIcosahedron()
+    this.createCylinder()
     this.loop()
-    // this.scene.add(new THREE.CameraHelper(this.camera))
+    // 是否开启辅助线
+    this.scene.add(new THREE.CameraHelper(this.camera))
   }
 
   createScene() {
-    this.HEIGHT = window.innerHeight
-    this.WIDTH = window.innerWidth
+    this.HEIGHT = window.innerHeight - 80
+    this.WIDTH = window.innerWidth - 80
 
     // 创建场景
     this.scene = new THREE.Scene()
@@ -70,8 +74,8 @@ class THREEAPP {
     /**
      * 这里添加了一个比例，如果相机的宽度个高度的比例和渲染的比例对不上，最后渲染出来就会变形
      */
-    const acspet = window.innerWidth / window.innerHeight
-    this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200)
+
+    this.camera = new THREE.PerspectiveCamera(45, this.aspectRatio, 0.1, 200)
     this.camera.position.set(0, 0, 100)
     this.camera.lookAt(this.scene.position)
 
@@ -129,6 +133,13 @@ class THREEAPP {
     this.icosahedron.mesh.position.x = 0
     this.icosahedron.mesh.position.y = 0
     this.scene.add(this.icosahedron.mesh)
+  }
+
+  createCylinder() {
+    this.cylinder = new Cylinder()
+    this.cylinder.mesh.position.x = 0
+    this.cylinder.mesh.position.y = 0
+    this.scene.add(this.cylinder.mesh)
   }
 
   handleWindowResize() {

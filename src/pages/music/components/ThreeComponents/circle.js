@@ -10,7 +10,6 @@ class Circle {
     this.mesh = new THREE.Object3D()
     // 创建圆环1
     const geome1 = new THREE.CircleGeometry(12, 80)
-
     // 创建皮肤1
     const material1 = new THREE.MeshBasicMaterial({
       color: 0x59b9f9,

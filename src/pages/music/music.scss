@@ -21,14 +21,12 @@ body,
   );
 }
 :global(#app) {
-  height: 100vh;
   background: linear-gradient(
     to top left,
     var(--bgColorLightd7f6fd) 0%,
     var(--bgColorLightf2fdfe) 65%,
     var(--bgColorLightf4fdff) 100%
   );
-  //background: #000000;
 }
 ::selected {
   color: var(--textColorDark);
