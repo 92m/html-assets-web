@@ -15,7 +15,7 @@ export const BinarySearch = function(arr, target) {
     m = Math.floor((s + e) / 2)
   }
   if (arr[m] == target) {
-    console.log('找到了,位置%s', m);
+    console.log('找到了,下标%s', m);
     return m;
   } else {
     console.log('没找到');

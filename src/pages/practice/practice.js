@@ -1,6 +1,8 @@
 import { twoSun, firstUniqChar, lengthOfLongestSubstring } from './utils/Leetcode-part-1'
 import { deepTraversal, wideTraversal } from './utils/BFS-DFS'
 import { top, topK } from './utils/TopK'
+import { BinarySearch } from './utils/BinarySearch'
+
 // 两数之和
 
 console.log('两数之和-twoSun', twoSun([1, 2, 3, 5, 7], 4))
@@ -25,40 +27,103 @@ const ret = topK(new Array(16, 22, 91, 0, 51, 44, 23), 3, function(a, b) {
 })
 console.log(ret)
 
+// 二分查找
+const arrBinarySearch = [88, 77, 66, 55, 44, 33, 22, 11]
+const BinarySearchRes = BinarySearch(arrBinarySearch, 88)
+
 // 草稿
 
+// 原型继承
 function Super(age) {
   this.age = age
 }
-
-const instance = new Super(24)
-
-console.log('instance.__proto__ === Super.prototype', instance.__proto__ === Super.prototype)
-console.log(
-  'instance.__proto__.__proto__ === Object.prototype',
-  instance.__proto__.__proto__ === Object.prototype
-)
-
-function info() {
-  console.log(this.age)
+Super.prototype.getAge = function() {
+  return this.age
 }
 
-const one = {
-  age: 1,
-  info,
-  f: function(a) {
-    this.a = a
-    return (b) => {
-      console.log(this.a + b)
-    }
+function SupType(name) {
+  this.name = name
+}
+SupType.prototype = new Super(23)
+
+SupType.prototype.getName = function() {
+  return this.name
+}
+SupType.prototype.constructor = Super
+
+const instance = new SupType('T')
+const instance1 = new SupType('T2')
+console.log(instance.getAge())
+console.log(instance.getName())
+console.log(instance1.getName())
+
+// 借用构造函数
+
+function Animal(type, age) {
+  this.type
+  this.age
+}
+
+function Dog(type, age, name) {
+  Animal.call(this, type, age)
+}
+
+const dahuang = new Dog('Dog', 23, 'dahuang')
+const xiaohuang = new Dog('Dog', 10, 'xiaohuang')
+
+// 原型式继承
+function object(o) {
+  function F() {}
+  F.prototype = o
+  return new F()
+}
+
+const xiaomao = object({
+  age: 10,
+  type: 'cat',
+  getName: function() {
+    console.log(this.age)
   }
+})
+
+xiaomao.getName()
+
+// 寄生组合式继承
+
+function inheritPrototype(subType, superType) {
+  const prototype = object(superType.prototype)
+  prototype.constructor = subType
+  subType.prototype = prototype
 }
 
-const _info = one.info
+function Animal2(type) {
+  this.type = type
+}
 
-_info.call(one)
+Animal2.prototype.getName = function() {
+  console.log(this.name)
+}
 
-one.f(1)(2)
-let m = 10
-true && (m = m +1)
-console.log(m)
+function Dog2(type, name, age) {
+  Animal2.call(this, type)
+  this.name = name
+  this.age = age
+}
+
+inheritPrototype(Dog2, Animal2)
+
+const xiaolan = new Dog2('dog2', 'xiaolan', 20)
+
+xiaolan.getName()
+
+if ([] == false) {
+  console.log('[] == false')
+}
+
+if ({} == false) {
+  console.log('{} == false')
+}
+
+if ([]) {
+  console.log('[]')
+}

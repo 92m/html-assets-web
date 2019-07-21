@@ -53,7 +53,7 @@ class Socket {
       if (err) throw err
       this.WSMessage = root.lookupType('yingzi_center_im_message.ImMessage')
     })
-  } 
+  }
   /**
    * 初始化 socket 变量
    * @param data 调用参数
@@ -184,7 +184,7 @@ class Socket {
    * 失败重连方法
    */
   reconnect() {
-    console.error(`连接失败，尝试第${this.recount}次重新连接！`)  
+    console.error(`连接失败，尝试第${this.recount}次重新连接！`)
     setTimeout(() => {
       this.startConnect()
     }, 10000)
