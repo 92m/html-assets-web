@@ -2,7 +2,7 @@ import { twoSun, firstUniqChar, lengthOfLongestSubstring } from './utils/Leetcod
 import { deepTraversal, wideTraversal } from './utils/BFS-DFS'
 import { top, topK } from './utils/TopK'
 import { BinarySearch } from './utils/BinarySearch'
-
+import './practice.scss'
 // 两数之和
 
 console.log('两数之和-twoSun', twoSun([1, 2, 3, 5, 7], 4))
@@ -127,3 +127,20 @@ if ({} == false) {
 if ([]) {
   console.log('[]')
 }
+
+function fn(){
+
+  for(var i = 0;i<5;i++){
+
+    (function(i){
+      setTimeout(function(){
+
+        console.log(i)
+         
+      },0);
+    })(i)
+
+  }
+}
+
+fn()
