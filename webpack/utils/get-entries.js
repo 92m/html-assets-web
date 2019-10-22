@@ -1,7 +1,7 @@
 const path = require('path')
 const glob = require('glob')
 
-const env = process.env.NODE_ENV
+const env = process.env.NODE_ENV === 'development' ? 'development' : 'production'
 const includeEntries = require('../config/include-entries.conf')
 const excludeEntries = require('../config/exclude-entries.conf')
 

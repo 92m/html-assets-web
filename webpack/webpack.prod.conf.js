@@ -1,10 +1,8 @@
-const path = require('path')
 const webpackMerge = require('webpack-merge')
 const compileModern = require('./compile/modern')
 const compileLegacy = require('./compile/legacy')
 const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const createLagacyEntries = require('./utils/create-legacy-entries')
 const { renderTemplate } = require('./compile/render-template')
 //const { cleanAssetsManifest } = require('./utils/load-assets-manifest')
@@ -31,15 +29,7 @@ const productionConfig = webpackMerge(loaderConfig, {
           reduce_vars: true // 提取出出现多次但是没有定义成变量去引用的静态值
         }
       }
-    }),
-    // 拷贝静态文件
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(process.cwd(), './static'),
-        to: path.resolve(process.cwd(), './dist'),
-        ignore: ['.*']
-      }
-    ])
+    })
   ],
   optimization: {
     minimizer: [

@@ -1,8 +1,10 @@
+const path = require('path')
 const webpack = require('webpack')
 const md5 = require('md5')
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const config = require('../config/project.conf')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 // 以函数的形式创建新的base对象，避免缓存
 // test与production环境共用的配置
@@ -30,7 +32,16 @@ const createBaseConfig = () => {
       new WebpackDeepScopeAnalysisPlugin(),
 
       // 显示进度
-      new ProgressBarPlugin()
+      new ProgressBarPlugin(),
+
+      // 拷贝静态文件
+      new CopyWebpackPlugin([
+        {
+          from: config.assetsSubDirectory,
+          to: path.resolve(process.cwd(), './dist/static'),
+          ignore: ['.*']
+        }
+      ])
     ]
   }
 

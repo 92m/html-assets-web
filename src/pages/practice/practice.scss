@@ -1,0 +1,16 @@
+body {
+  position:relative;
+  background: #cccccc;
+  .childElement {
+    width: 50%;
+    padding-bottom: 50%;
+    text-align: center;
+    background: #ffffff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+  }
+  .parent {
+    background: #000000
+  }
+}

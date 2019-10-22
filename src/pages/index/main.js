@@ -4,6 +4,7 @@ import Sea from './components/member/sea'
 import Sky from './components/member/sky'
 import AirPlane from './components/member/airPlane'
 initMixin(THREE)
+
 class THREEAPP {
   constructor(container, ops) {
     this.scene = null

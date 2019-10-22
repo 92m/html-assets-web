@@ -1,4 +1,5 @@
 const os = require('os')
+const { resolve } = require('path')
 const HappyPack = require('happypack')
 
 const happyThreadPool = HappyPack.ThreadPool({
@@ -23,9 +24,21 @@ const configBabelLoader = browserlist => {
                   browsers: browserlist
                 }
               }
-            ]
+            ],
+            'stage-2',
+            'react'
           ],
-          plugins: ['syntax-dynamic-import']
+          plugins: [
+            'syntax-dynamic-import',
+            'react-hot-loader/babel',
+            [
+              'dva-hmr',
+              {
+                entries: [resolve(process.cwd(), './src/pages/payment/payment.js')]
+              }
+            ],
+            ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }]
+          ]
         }
       }
     ], // 实际匹配处理的loader

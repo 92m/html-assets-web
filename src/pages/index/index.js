@@ -10,4 +10,9 @@ import './index.scss'
   const app = new THREEAPP(document.getElementById('container'))
 
   app.initGL()
+
+  const loading = document.getElementsByClassName('loading-img')[0]
+  
+  loading && loading.parentNode.removeChild(loading)
+
 })()
