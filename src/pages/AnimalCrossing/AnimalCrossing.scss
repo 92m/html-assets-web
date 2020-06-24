@@ -1,0 +1,59 @@
+html, body {
+  background-color: #eae5ab;
+}
+
+#root {
+  height: 100vh;
+}
+.left {
+  position: fixed;
+  width: 50px;
+  background-color: #cccccc;
+  left: 0px;
+  top: 0;
+  bottom: 0;
+}
+.container {
+
+  height: 100vh;
+  margin: 0 0 0 50px;
+  .main {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100%;
+    .heart {
+      position: fixed;
+      left: 50px;
+      top:0;
+      width: 100%;
+      height: 50px;
+      background-color: #eaabcb;
+    }
+    .mainBody {
+      margin: 50px 150px 0 150px;
+      height: 100%;
+      background-color: #cccccc;
+      .mainLeft {
+        float: left;
+        width: 150px;
+        margin-left: -150px;
+        height: 100%;
+        background: #000000;
+      }
+      .mainConet {
+        float: left;
+        width: 100%;
+        height: 100%;
+        background-color: #abeae4;
+      }
+      .mainRight {
+        float: left;
+        width: 150px;
+        margin-right: -150px;
+        height: 100%;
+        background: #845c5c;
+      }
+    }
+  }
+}
